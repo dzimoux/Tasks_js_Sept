@@ -40,62 +40,74 @@
 // При натисканні prev виводяться попередні 10 об'єктів
 //
 
-// const createdArray = [...Array(100).keys()];
-//
-// const array = createdArray.map((item) => {
-//     return {
-//         id: item + 1,
-//         name: `Product ${item + 1}`,
-//     };
-// });
+const createdArray = [...Array(100).keys()];
 
-// let buttonPrev = document.getElementById('prev')
-// let buttonNext = document.getElementById('next')
-// let divOF100 = document.getElementById('divOf100')
-// const makeDiv = (items) => {
-//     let htmlTeg = ``;
-//     items.forEach((item)=>{
-//         console.log(item)
-//         htmlTeg += `<div>${item.name}</div>`}
-//     )
-//     divOF100.innerHTML = htmlTeg
-//
-// }
-//
-//
-// let currentPage = 1;
-// let limit = 10;
-// let totalPages = array.length / limit;
-//
-//
-// const firstof100 = array.slice(0,10);
-// makeDiv(firstof100)
-// buttonNext.onclick = function (){
-// if(currentPage + 1 > totalPages){
-//     return
-// }
-//     currentPage += 1
-//     //page 1 = 1*10 =10
-//     //page 2 = 2*10 = 20
-//     //page3 = 3*10 = 30
-//   //10   //20   //30
-//     const endIndex = limit * currentPage;
-//     const startIndex = endIndex - limit; // 20
-//     const items = array.slice(startIndex,endIndex)
-//     makeDiv(items)
-//
-// }
-//
-// buttonPrev.onclick = function (){
-//     if(currentPage - 1 < 1){
-//         return
-//     }
-//     currentPage -= 1;
-//     const endIndex =  currentPage * limit         //30
-//     const startIndex =     endIndex - limit      //20
-//     const items = array.slice(startIndex, endIndex)
-//     makeDiv(items)
-// }
+const array = createdArray.map((item) => {
+    return {
+        id: item + 1,
+        name: `Product ${item + 1}`,
+    };
+});
+
+let buttonPrev = document.getElementById('prev')
+let buttonNext = document.getElementById('next')
+let divOF100 = document.getElementById('divOf100')
+const makeDiv = (items) => {
+    let htmlTeg = ``;
+    items.forEach((item)=>{
+        console.log(item)
+        htmlTeg += `<div>${item.name}</div>`}
+    )
+    divOF100.innerHTML = htmlTeg
+
+}
+
+
+let currentPage = 1;
+let limit = 10;
+let totalPages = array.length / limit;
+
+
+const firstof100 = array.slice(0,10);
+makeDiv(firstof100)
+buttonNext.onclick = function (){
+if(currentPage + 1 > totalPages){
+    return
+}
+
+
+    currentPage += 1
+    if (currentPage === limit){
+        buttonNext.disabled = true;
+    }
+
+    //page 1 = 1*10 =10
+    //page 2 = 2*10 = 20
+    //page3 = 3*10 = 30
+  //10   //20   //30
+    const endIndex = limit * currentPage;
+    const startIndex = endIndex - limit; // 20
+    const items = array.slice(startIndex,endIndex)
+    makeDiv(items)
+
+}
+
+buttonPrev.onclick = function (){
+    if(currentPage - 1 < 1){
+        return
+    }
+
+    currentPage -= 1;
+    if(currentPage > 2){
+        buttonPrev.disabled = false;
+    } else if (currentPage === 1){
+        buttonPrev.disabled = true;
+    }
+    const endIndex =  currentPage * limit         //30
+    const startIndex =     endIndex - limit      //20
+    const items = array.slice(startIndex, endIndex)
+    makeDiv(items)
+}
 
 
 

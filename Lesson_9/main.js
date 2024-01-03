@@ -250,3 +250,5 @@ titleDiv.innerHTML = coursesArrayElement.title
 
 
 
+
+

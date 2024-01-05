@@ -70,17 +70,40 @@ let totalPages = array.length / limit;
 
 const firstof100 = array.slice(0,10);
 makeDiv(firstof100)
-buttonNext.onclick = function (){
-if(currentPage + 1 > totalPages){
-    return
+
+
+let prevClickFun = buttonPrev.onclick = function (){
+    if(currentPage - 1  < 1 || currentPage === 1){
+        buttonPrev.disabled = true;
+buttonNext.onclick = function(){
+    buttonPrev.disabled = false;
+    nextClickFun()
 }
-
-
-    currentPage += 1
-    if (currentPage === limit){
-        buttonNext.disabled = true;
     }
 
+    currentPage -= 1;
+    // if(currentPage > 2){
+    //     buttonPrev.disabled = false;
+    // } else if (currentPage === 1){
+    //     buttonPrev.disabled = true;
+    // }
+    const endIndex =  currentPage * limit         //30
+    const startIndex =     endIndex - limit      //20
+    const items = array.slice(startIndex, endIndex)
+    makeDiv(items)
+}
+// ============
+
+let nextClickFun = buttonNext.onclick = function (){
+
+if(currentPage  === limit - 1){
+    buttonNext.disabled = true;
+    buttonPrev.onclick = function (){
+        buttonNext.disabled = false;
+        prevClickFun()
+    }
+}
+    currentPage += 1
     //page 1 = 1*10 =10
     //page 2 = 2*10 = 20
     //page3 = 3*10 = 30
@@ -92,22 +115,7 @@ if(currentPage + 1 > totalPages){
 
 }
 
-buttonPrev.onclick = function (){
-    if(currentPage - 1 < 1){
-        return
-    }
 
-    currentPage -= 1;
-    if(currentPage > 2){
-        buttonPrev.disabled = false;
-    } else if (currentPage === 1){
-        buttonPrev.disabled = true;
-    }
-    const endIndex =  currentPage * limit         //30
-    const startIndex =     endIndex - limit      //20
-    const items = array.slice(startIndex, endIndex)
-    makeDiv(items)
-}
 
 
 

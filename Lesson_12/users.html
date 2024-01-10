@@ -21,7 +21,7 @@
             let a = document.createElement('a')
             li.appendChild(a)
 a.innerHTML = `${user.id} - ${user.name}`;
-            a.href = `http://localhost:63342/Tasks_js_Sept/Lesson_12/user-details.html?id=` + JSON.stringify(user.id)
+            a.href = `user-details.html?id=` + JSON.stringify(user.id)
 
 
             ul.appendChild(li)

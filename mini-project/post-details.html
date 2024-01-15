@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let url = new URL(location.href)
+    let postID = url.searchParams.get('userId')
+console.log(postID)
+
+    fetch('https://jsonplaceholder.typicode.com/users/' + postID + '/posts')
+    .then(value => value.json())
+    .then((posts) => {
+let pre = document.createElement('pre')
+        document.body.appendChild(pre)
+        pre.innerHTML = JSON.stringify(posts,null,"\t");
+    })
+
+    fetch('https://jsonplaceholder.typicode.com/posts/' + postID + '/comments')
+    .then(value => value.json())
+    .then((comments) => {
+
+        let pre = document.createElement('pre')
+        document.body.appendChild(pre)
+        pre.innerHTML = JSON.stringify(comments,null,"\t")
+
+    })
+</script>
+</body>
+</html>

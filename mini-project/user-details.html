@@ -238,6 +238,33 @@ position: relative;
     color: white;
 }
 
+#big_p_1{
+    display: flex;
+    gap: 20px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+}
+#big_p_2{
+  display: flex;
+    gap: 20px;
+    padding-left: 40px;
+}
+
+#big_p_1 div{
+    background-color: #499393;
+    width: 250px;
+    margin: 14px;
+    border-radius: 15px;
+}
+
+    #big_p_2 div{
+        background-color: #499393;
+        width: 250px;
+        margin: 14px;
+        border-radius: 15px;
+    }
+
+
 </style>
 
 <script>
@@ -271,32 +298,46 @@ let aPost = document.createElement("a")
                 p.innerText = 'Watch comments and other info'
                 aPost.appendChild(bAboutPost)                         //кнопка подивитись пост
 
-                    for (const post of posts) {
-                        aPost.href ='./post-details.html?userId=' + post.userId;
-                        let postDiv = document.createElement('div')
-                         document.body.appendChild(postDiv)
-                         postDiv.innerHTML = post.title;
-                        postDiv.id = 'p_' + post.id;
+
+                let postCounter = 0;
+
+                for (const post of posts) {
+                    if (postCounter >= 10) {
+                        break;
                     }
 
-                    let post1 = document.getElementById('p_1')
-                let post2 = document.getElementById('post_2')
+                    aPost.href = './post-details.html?userId=' + post.userId;
+                    let postDiv = document.createElement('div')
+                    document.body.appendChild(postDiv)
+                    postDiv.innerHTML = post.title;
+                    postDiv.id = 'p_' + postCounter;
+                    console.log(postDiv)
 
-                let post3 = document.getElementById('post_3')
-                let post4 = document.getElementById('post_4')
-                let post5 = document.getElementById('post_5')
-                let post6 = document.getElementById('post_6')
-                let post7 = document.getElementById('post_7')
-                let post8 = document.getElementById('post_8')
-                let post9 = document.getElementById('post_9')
-                let post10 = document.getElementById('post_10')
+                    postCounter++;
+                }
+                let p0 = document.getElementById('p_0')
+                let p1 = document.getElementById('p_1')
+                let p2 = document.getElementById('p_2')
+                let p3 = document.getElementById('p_3')
+                let p4 = document.getElementById('p_4')
+                let p5 = document.getElementById('p_5')
+                let p6 = document.getElementById('p_6')
+                let p7 = document.getElementById('p_7')
+                let p8 = document.getElementById('p_8')
+                let p9 = document.getElementById('p_9')
 
                 let bigPost1 = document.createElement("div")
                 let bigPost2 = document.createElement("div")
+                bigPost1.id = 'big_p_1'
+                bigPost2.id = 'big_p_2'
                 document.body.appendChild(bigPost1)
                 document.body.appendChild(bigPost2)
+                bigPost1.append(p0,p1,p2,p3,p4)
+                bigPost2.append(p5,p6,p7,p8,p9)
+
 
             })
+        button.disabled = true;
     }
     let p = document.createElement('p')
     button.appendChild(p)

@@ -5,7 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-
+<style>
+    #com_div_1 p{
+        display: flex;
+    }
+</style>
 
 <script>
     let url = new URL(location.href)
@@ -27,6 +31,22 @@ let pre = document.createElement('pre')
         let pre = document.createElement('pre')
         document.body.appendChild(pre)
         pre.innerHTML = JSON.stringify(comments,null,"\t")
+        let div1 = document.createElement("div")
+        for (let i = 0; i < comments.length; i++) {
+            let div = document.createElement("div")
+            pre.appendChild(div)
+            div.id = 'com_div_' + i;
+            console.log(div)
+            // Create content for each comment div
+            let commentContent = document.createElement('p');
+            commentContent.innerText = comments[i].body;
+            div.appendChild(commentContent);
+
+            // You can add more content or styling to each comment div as needed
+
+            console.log(div);
+        }
+
 
     })
 </script>

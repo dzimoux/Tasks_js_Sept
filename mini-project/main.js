@@ -31,6 +31,12 @@ fetch('https://jsonplaceholder.typicode.com/users')
         let block3 = document.getElementById('bl3')
         let block4 = document.getElementById('bl4')
         let block5 = document.getElementById('bl5')
+
+
+    block2.classList.add('block_class')
+    block3.classList.add('block_class')
+    block4.classList.add('block_class')
+    block5.classList.add('block_class')
     block1.append(divN1,divN2)
     block2.append(divN3,divN4)
     block3.append(divN5,divN6)

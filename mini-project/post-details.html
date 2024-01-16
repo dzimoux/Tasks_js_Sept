@@ -45,6 +45,16 @@
         border-color: #cccccc;
 
     }
+
+    #div1{
+        display: flex;
+        gap: 50px;
+    }
+
+    #div2{
+        display: flex;
+        gap: 50px;
+    }
 </style>
 
 <script>
@@ -57,6 +67,7 @@ console.log(postID)
     .then((posts) => {
 let pre = document.createElement('pre')
         document.body.appendChild(pre)
+        pre.id = 'pre_posts'
         pre.innerHTML = JSON.stringify(posts,null,"\t");
     })
 
@@ -66,8 +77,10 @@ let pre = document.createElement('pre')
 
         let pre = document.createElement('pre')
         document.body.appendChild(pre)
+        pre.id = 'pre_comments'
+        let prePost = document.getElementById('pre_posts')
+        prePost.appendChild(pre)
         pre.innerHTML = JSON.stringify(comments,null,"\t")
-        let div1 = document.createElement("div")
         for (let i = 0; i < comments.length; i++) {
             let div = document.createElement("div")
             pre.appendChild(div)
@@ -83,9 +96,20 @@ let pre = document.createElement('pre')
             console.log(div);
         }
         let com_div1= document.getElementById('com_div_0')
-        let com_div2= document.getElementById('com_div1')
+        let com_div2= document.getElementById('com_div_1')
         let com_div3= document.getElementById('com_div_2')
+        let com_div4= document.getElementById('com_div_3')
+        let com_div5= document.getElementById('com_div_4')
+
+        let div1 = document.createElement("div")
+        let div2 = document.createElement("div")
+        document.body.append(div1,div2)
         div1.append(com_div1,com_div2,com_div3)
+        div2.append(com_div4,com_div5)
+
+        div1.id = 'div1'
+        div2.id = 'div2'
+
 
 
     })
